@@ -49,7 +49,14 @@ export class Message extends React.Component {
           rows="10"
         />
         <Button onClick={() => this.getMessageResult()}>SEND</Button>
-        <div>{JSON.stringify(this.state.result)}</div>
+        {this.state.result ? (
+          <div>
+            <h2>Result:</h2>
+            <div><pre>{(Array.isArray(this.state.result))? (this.state.result.map((data, index) => (<div key={index}>{JSON.stringify(data)}</div>) )): JSON.stringify(this.state.result) }</pre></div>
+          </div>
+        ) : (
+          ""
+        )}
       </Wrapper>
     );
   }
